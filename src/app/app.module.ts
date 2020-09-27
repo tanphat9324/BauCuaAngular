@@ -9,9 +9,15 @@ import { AngularFirestoreModule } from '@angular/fire/firestore';
 import { AngularFireStorageModule } from '@angular/fire/storage';
 import { AngularFireAuthModule } from '@angular/fire/auth';
 import { environment } from '../environments/environment';
+import { HomePageComponent } from './home-page/home-page.component';
+import { GameComponent } from './game/game.component';
+import { RankComponent } from './rank/rank.component';
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    HomePageComponent,
+    GameComponent,
+    RankComponent
   ],
   imports: [
     BrowserModule,
