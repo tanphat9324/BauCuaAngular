@@ -1,0 +1,59 @@
+.bg1 {
+    background-color: #3b5998;
+}
+.bg2 {
+    background-color: #1da1f2;
+}
+.bg3 {
+    background-color: #ea4335;
+}
+
+.form_login{
+    width: 500px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    position: absolute;
+    top:50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+
+// [ Social item ]*/
+.login100-social-item {
+    font-size: 25px;
+    color: #fff;
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    margin: 5px;
+    text-decoration: none;
+    transition-property: all;
+    transition-duration: 0.4s;
+    transition-timing-function: ease;
+    transition-delay: 0s;
+    -webkit-transition: all 0.4s;
+}
+
+.login100-social-item:hover {
+    color: #fff;
+    background-color: #333333;
+}
+
+.flex-c-m {
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: -moz-box;
+    display: -ms-flexbox;
+    display: flex;
+    justify-content: center;
+    -ms-align-items: center;
+    align-items: center;
+}

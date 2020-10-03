@@ -34,12 +34,14 @@ export class GameComponent implements OnInit {
       value: 0
     },
   ];
-
+  userBauCua = [...this.listBauCua];
   isActive: boolean = false;
   activeChoosen: string = '';
   listChoose = new Array(3);
-  totalMoney: number = 1_000_000;
+  totalMoney: number = 100_000;
   tienDat: number = 0;
+  isScrolled: boolean = false;
+  isOpen: boolean = false;
   ngOnInit(): void {
   }
 
@@ -94,11 +96,39 @@ export class GameComponent implements OnInit {
   quay() {
     if (this.isActive) {
       for (let i = 0; i < this.listChoose.length; i++) {
-        let random = Math.floor(Math.random() * this.listMoney.length);
-        this.listChoose[i] = this.listMoney[random];
+        let random = Math.floor(Math.random() * this.listBauCua.length);
+        this.listChoose[i] = this.listBauCua[random];
       }
       this.isActive = false;
+      this.resultGame();
+      this.isScrolled = true;
     }else console.log('Moi chon bau Cua')
+  console.log(this.listChoose);
+  
+  }
+
+  resultGame(){
+    //Tim vi tri dat cuoc
+    
+    let listDatCuoc = this.listBauCua.filter(x=> x.value!==0);
+    console.log(listDatCuoc);
+    console.log(this.listChoose);
+    
+    for (let i = 0; i < this.listChoose.length; i++) {
+      let index = listDatCuoc.findIndex(x=>x.name===this.listChoose[i].name);
+      console.log('value',index);
+      
+      if(index!==-1) this.totalMoney+=listDatCuoc[index].value;
+      // if(listDatCuoc.length+1>i) break;
+      // if(listDatCuoc[i].name===this.listChoose[i].name){
+      //   this.totalMoney+=this.listChoose[i].value;
+      //   console.log(this.totalMoney);
+        
+      // }
+      
+    }
+    console.log(this.totalMoney);
+    
   }
 
 }

@@ -1,3 +1,4 @@
+import { AuthModule } from './auth/auth.module';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 
@@ -12,6 +13,9 @@ import { environment } from '../environments/environment';
 import { HomePageComponent } from './home-page/home-page.component';
 import { GameComponent } from './game/game.component';
 import { RankComponent } from './rank/rank.component';
+import { ClarityModule } from '@clr/angular';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -23,11 +27,13 @@ import { RankComponent } from './rank/rank.component';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
+    AuthModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
     AngularFirestoreModule, // firestore
     AngularFireAuthModule, // auth
-    AngularFireStorageModule // storage
+    AngularFireStorageModule, ClarityModule, BrowserAnimationsModule // storage,
   ],
+  exports:[ClarityModule],
   providers: [],
   bootstrap: [AppComponent]
 })

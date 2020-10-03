@@ -15,42 +15,69 @@
         </div>
     </div>
 </div>
-<div class="flex h-64">
-    <div class="w-1/2 bg-gray-500">
-    <div class="container">
-        <div class="flex flex-wrap">
-            <button *ngFor="let item of listBauCua" class="w-1/3">
-            <img (click)="datBauCua(item)" src="" alt={{item.name}}> {{item.value}}
-            </button>
-        </div>
-    </div>
-    <div class="info">
-       <a href="">HOme</a>
-       <span>{{totalMoney}}$</span>
-    </div>
-    </div>
-    <div class="w-1/2 bg-pink-500">
-    <div class="listMoney">
-        <div class="flex flex-wrap">
-            <button *ngFor="let item of listMoney" class="w-1/4">
-                <img (click)="handleBet(item)" style="width: 100%" src="../../assets/images/money/{{item}}.jpg" alt="">
-            </button>
-        </div>
-        <div class="chooseMoney">
-            <img src="" alt="">
-        </div>
-        <h3>Tong tien dat cuoc: {{tienDat}}</h3>
-        <span (click)="reset()">Reset</span>
-    </div>
 
-    <div class="resultGame w-full">
-        <div class="flex">
-            <div *ngFor="let item of listChoose" class="w1/3">
-            <!-- <img src="../../assets/images/money/0.jpg" alt=""> -->
-            {{item}}
-        </div>
-        </div>
-        <button (click)="quay()" class="">QUAY</button>
+<div class="bg" style="background-color: blue">
+    <div style="width: 75%;margin:0 auto; background-color: #264e50;">
+        <div class="clr-row">
+            <div class="clr-col-7">
+                <div style="background-color: aqua;padding: 20px;border-radius: 10px;">
+                    <div class="clr-row">
+                        <!-- <div class="clr-col-4"> -->
+                            <div *ngFor="let item of listBauCua" class="item clr-col-4">
+                                <button style="border:2px solid #fae095;border-radius: 10px;">
+                                    <img style="max-width: 100%; max-height: 100%; border-radius: 8px;"  (click)="datBauCua(item)" src="../../assets/images/bauCua/{{item.name}}.jpg" alt={{item.name}}>
+                                    {{item.value}}
+                                    </button>
+                            </div>
+                        <!-- </div> -->
+                    </div>
+                </div>
+           
+            <div class="info">
+               <a href="">HOme</a>
+               <span>{{totalMoney}}$</span>
+            </div>
+            </div>
+            <div class="clr-col-5">
+            <div style="padding:10px" class="listMoney">
+                <div class="flex flex-wrap">
+                    <button *ngFor="let item of listMoney" class="w-1/4">
+                        <img (click)="handleBet(item)" style="width: 100%" src="../../assets/images/money/{{item}}.jpg" alt="">
+                    </button>
+                </div>
+                <div class="chooseMoney">
+                    <img src="" alt="">
+                </div>
+                <h3>Tong tien dat cuoc: {{tienDat}}</h3>
+                <button class="btn btn-primary" (click)="isOpen=true">Show</button>
+                <button class="btn btn-warning" (click)="reset()">Reset</button>
+            </div>
+        
+            <div class="resultGame w-full">
+                <div *ngIf="isScrolled" class="flex">
+                    <div *ngFor="let item of listChoose" class="w1/3">
+                    <img width="100px" src="../../assets/images/bauCua/{{item.name}}.jpg" alt="">
+                </div>
+                </div>
+                <button class="btn btn-success" (click)="quay()">QUAY</button>
+            </div>
+            </div>
+          </div>
+    </div>    
+</div>
+
+<clr-modal [(clrModalOpen)]="isOpen" [clrModalSize]="'sm'">
+    <h3 class="modal-title">Danh sách đã cược</h3>
+    <div class="modal-body">
+        <!-- <div class="clr-row">
+            <div class="clr-col-6"></div>
+        </div> -->
+        <ng-container *ngFor="let item of listBauCua">
+            <p *ngIf="item.value">{{item.name}} : {{item.value}}</p>
+        </ng-container>
     </div>
+    <div class="modal-footer">
+        <button type="button" class="btn btn-outline" (click)="isOpen = false">Cancel</button>
+        <button type="button" class="btn btn-primary" (click)="isOpen = false">Ok</button>
     </div>
-  </div>
+</clr-modal>
